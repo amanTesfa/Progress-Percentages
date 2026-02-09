@@ -39,15 +39,15 @@ function App() {
     }, 50)
   }
 
-  const radius = 36
-  const stroke = 8
-  const normalizedRadius = radius - stroke / 2
+  const radius = 80
+  const stroke = 15
+  const normalizedRadius = radius - stroke 
   const circumference = 2 * Math.PI * normalizedRadius
   const strokeDashoffset = circumference - (percent / 100) * circumference
 
   return (
-    <div className="flex flex-col md:flex-row gap-60 justify-center p-8 h-screen w-full items-center">
-      <div id="box1" className="flex flex-col items-center bg-white/80 rounded-lg p-6 shadow">
+    <div className="md:flex md:flex-row justify-center p-8 h-screen w-full ">
+      <div id="box1" className="flex flex-col items-center p-6 min-w-xl">
         <label className="mb-2 text-sm text-gray-700">Duration (seconds)</label>
         <div className="flex gap-2 mb-4">
           <input
@@ -60,7 +60,7 @@ function App() {
           />
           <button
             onClick={() => animateTo100(seconds)}
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            className="px-4 py-2 bg-cyan-500 text-white rounded hover:bg-green-600"
           >
             Apply
           </button>
@@ -81,7 +81,7 @@ function App() {
               fill="transparent"
               strokeWidth={stroke}
               strokeLinecap="round"
-              strokeDasharray={`${circumference} ${circumference}`}
+              strokeDasharray={circumference}
               style={{ strokeDashoffset }}
               r={normalizedRadius}
               cx={radius}
@@ -94,8 +94,17 @@ function App() {
         </div>
       </div>
 
-      <div id="box2" className="flex items-center justify-center w-40 h-40 bg-gray-100 rounded">Percentage 2</div>
-      <div id="box3" className="flex items-center justify-center w-40 h-40 bg-gray-100 rounded">Percentage 3</div>
+      <div id="box2" className="flex flex-col items-center p-6 min-w-xl">
+        <label className="mb-2 text-sm text-gray-700">Horizontal Progress</label>
+        <div className="w-64 h-6 bg-gray-200 rounded-full overflow-hidden mb-2">
+          <div
+            className="h-full bg-green-500 transition-all duration-100"
+            style={{ width: percent + '%' }}
+          ></div>
+        </div>
+        <span className="text-lg font-medium">{percent}%</span>
+      </div>
+      <div id="box3" className="flex flex-col items-center p-6 min-w-xl">Percentage 3</div>
     </div>
   )
 }
