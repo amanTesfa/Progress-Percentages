@@ -1,6 +1,6 @@
 **Progress Percentages** 
 
-A simple WEB UI to visually display progress using percentage bars. Built with React (Vite) and Tailwind CSS.
+A simple WEB UI to visually display progres using 3 different percentage bars. Built with React (Vite) and Tailwind CSS.
 
 **Features**
 
